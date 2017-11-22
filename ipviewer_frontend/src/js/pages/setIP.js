@@ -1,34 +1,31 @@
 import React from "react";
 
-import Todo from "../components/Todo";
-import * as TodoActions from "../actions/TodoActions";
-import TodoStore from "../stores/TodoStore";
+import * as ipActions from "../actions/ipActions";
+import IPStore from "../stores/IPStore";
 
 
 export default class Featured extends React.Component {
   constructor() {
     super();
-    this.getTodos = this.getTodos.bind(this);
     this.updateInputValue = this.updateInputValue.bind(this);
+    this.reloadIP.bind(this);
     this.state = {
-      todos: TodoStore.getAll(),
-      ips: TodoStore.getAllIP(),
+      ips: IPStore.getAllIP(),
       inputfield:''
     };
   }
 
   componentWillMount() {
-    TodoStore.on("change", this.getTodos);
+    IPStore.on("change", this.getIPs);
   }
 
   componentWillUnmount() {
-    TodoStore.removeListener("change", this.getTodos);
+    IPStore.removeListener("change", this.getIPs);
   }
 
-  getTodos() {
+  getIPs() {
     this.setState({
-      todos: TodoStore.getAll(),
-      ips: TodoStore.getAllIP()
+      ips: IPStore.getAllIP()
     });
   }
 
@@ -38,28 +35,19 @@ export default class Featured extends React.Component {
 
   }
 
-  createTodos() {
-    TodoActions.createTodo(this.state.inputfield);
-  }
-
   createIP() {
-    TodoActions.setIP(this.state.inputfield);
+    ipActions.setIP(this.state.inputfield);
   }
-
-  reloadTodos() {
-    TodoActions.reloadTodos();
-  }
-
+  
   reloadIP() {
-    TodoActions.reloadIP();
+    ipActions.reloadIP();
   }
   render() {
-    const { todos } = this.state;
     const { ips } = this.state;
     const { inputfield } = this.state;
-    const TodoComponents = todos.map((todo) => {
-        return <Todo key={todo.id} {...todo}/>;
-    });
+//    const TodoComponents = todos.map((todo) => {
+//        return <Todo key={todo.id} {...todo}/>;
+//    });
     /*
     const IPScomponents = Object.keys(ips).map(function(key){
       if(ips[key].hasOwnProperty("hostname")){
@@ -96,7 +84,7 @@ export default class Featured extends React.Component {
           <div class="form-group">
             <input class="form-control" placeholder="IP" type="text" onChange={this.updateInputValue} ></input>
           </div>
-          <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+          <button onClick={this.createIP.bind(this)} type="submit" class="btn btn-primary btn-lg">Submit</button>
         </form>
       </div>
       )
