@@ -11,8 +11,19 @@ export function setIP(ip){
   //.send({"value" : ip})
   .end(function(err,res){
     //var ipToSet = JSON.parse(res.text);
+    var answer=false;
+    //if(err){
+    //  answer = false;
+    //}
+    //else{
+    //  if(res.statusCode==200)
+    //    answer=true;
+    //  else
+    //    answer=false;
+    //}
     dispatcher.dispatch({
-    type: "SET_IP"    
+    type: "SET_IP",
+    answer: answer
   });  
   })
 
@@ -31,34 +42,3 @@ export function reloadIP() {
 
     });
  }
-
-    //(data) => {
-     //console.log("got the data!", data);
-   
-    //dispatcher.dispatch({type: "FETCH_IP"});
-  
-    //dispatcher.dispatch({type: "RECEIVE_IP", ips: [
-    //  {
-    //    id: 8484848484,
-    //    text: "Go Shopping Again",
-    //    complete: false
-    //  },
-    //  {
-    //    id: 6262627272,
-    //    text: "Hug Wife",
-    //    complete: true
-    //  },
-   // ]});
-    //})
-
-//export function setIP(){
-//  dispatcher.dispatch({type: "SET_IP"});
-//
-//  addapi
-//}
-
-//export function getAllIP(){
-//  dispatcher.dispatch({type: "GET_IP"});
-//
-//  getip
-//}

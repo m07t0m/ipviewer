@@ -43,32 +43,9 @@ app.use(function (req, res, next) {
  app.use(bodyParser.json());
 
  app.use('', require('./routes/api'));
- //console.log("pierwszy  --- "+xor.decode('clhFVUJJXmVJQUVCWUNlCBwLUgsBMAwEClJEUyEXAAQBBgQkFhVFFgZTMBUZABgMBysXAwYbSRplHB8WBQASIRsKABwAEmUoAgoVGxIoEQMRCw==', 'Experis'));
-
- //console.log("pierwszy  --- "+xor.encode('clhFVUJJXmVJQUVCWUNlCBwLUgsBMAwEClJEUyEXAAQBBgQkFhVFFgZTMBUZABgMBysXAwYbSRplHB8WBQASIRsKABwAEmUoAgoVGxIoEQMRCw==', 'Experis'));
 
  app.listen(3000);
 
- //setInterval(function() {ipCtrl.EngineIP()},20000);
  ipCtrl.EngineIP();
- //function dupa(){
- 	//ipParser.getIP();
- //}
 
-//setInterval(ipParser.setIP, 10000);
-/*async.waterfall([
-    function (cb) {
-		ipParser.setIP("192.168.1",cb);
-		
-	}, function (cb) {
-		//console.log("dupa dupa");
-		ipParser.getIP(cb);
-		
-	}], 
-	function (err) {
-	    if (err) {
-	        console.log("Some error:" + err);
-	        //setTimeout(function(){process.exit(1);},10000);
-	    }
-	});*/
  console.log('running....');

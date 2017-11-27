@@ -2,15 +2,13 @@ import { EventEmitter } from "events";
 
 import dispatcher from "../dispatcher";
 var ipfilesContext = [];
+var setIPResult=false;
+//var modalState=false;
 class IPStore extends EventEmitter {
 
   setIP(text) {
 
-    this.todos.push({
-      text,
-      complete: true,
-    });
-
+    setIPResult = text;
     this.emit("change");
   }
   
@@ -19,14 +17,32 @@ class IPStore extends EventEmitter {
     this.emit("change");
   }
 
+  //setIPresult() {
+  //  return setIPResult;
+  //}
+
   getAllIP() {
     return ipfilesContext;
   }
+/*
+  GetModalState(){
+    this.emit("change");
+    return modalState;
+  }
+
+  ChangeModalState(){
+    if(modalState==false){
+      modalState=true;
+    }
+    else{
+      modalState=false;
+    }
+  }*/
 
   handleActions(action) {
     switch(action.type) {      
       case "SET_IP": {
-        this.setIP(action.text);
+        this.setIP(action.answer);
         break; 
       }
       case "RECEIVE_IP": {

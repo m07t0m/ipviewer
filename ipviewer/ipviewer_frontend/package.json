@@ -1,5 +1,5 @@
 {
-  "name": "react-tutorials",
+  "name": "react-IP",
   "version": "0.0.0",
   "description": "",
   "main": "webpack.config.js",
@@ -16,6 +16,7 @@
     "flux": "^2.1.1",
     "history": "^1.17.0",
     "react": "^0.14.6",
+    "react-bootstrap-table": "^4.1.5",
     "react-dom": "^0.14.6",
     "react-router": "^1.0.3",
     "webpack": "^1.12.9",
@@ -26,5 +27,5 @@
     "dev": "webpack-dev-server --content-base src --inline --hot"
   },
   "author": "",
-  "license": "ISC"
+  "license": "MIT"
 }

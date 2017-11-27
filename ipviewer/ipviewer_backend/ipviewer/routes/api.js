@@ -14,7 +14,6 @@ router.get('/ipdetails', function(req,res){
 router.post('/setip', function(req, res){
 	var newIP = req.body;
 	IPCtrl.setIP(newIP)
-	//IPCtrl2.SetIP(newIP);
 	IPCtrl.EngineIP();
 	res.json(newIP);
 })

@@ -22,12 +22,11 @@ function EngineIP(){
 	for (var i=0;i<256;i++){
 		ipMap += ipContJSON.ipValue+'.'+i+' ';	
 	}
-	//console.log(ipMap);
 
 	var nmapscan = new nmap.NmapScan(ipMap, '-sn');
 	
 	nmapscan.on('complete',function(data){
-		console.log("On complete. Number of adresse updated: "+data.length);
+		console.log("On complete. Number of adresses updated: "+data.length);
 		if(count==3){
 			console.log("Clear ipStore");
 			utils.createIPTemp((JSON.parse(filesModel.GetConfigFile())).ipValue);
@@ -40,7 +39,7 @@ function EngineIP(){
 				count++;
 				EngineIP()
 			},
-		 	100000)
+		 	10000)
 	});
 
 	nmapscan.on('error', function(error){
